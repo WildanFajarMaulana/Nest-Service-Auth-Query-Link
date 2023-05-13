@@ -1,0 +1,27 @@
+type User {
+  id: ID!
+  username: String!
+  email: String!
+}
+
+input CreateUserInput {
+  username: String!
+  email: String!
+  password: String!
+}
+
+input RegexInput {
+  username: String
+}
+
+type Query {
+  getUser(id: ID!): User!
+  getUserFilter(regex: RegexInput!): [User!]!
+  getUsers: [User!]!
+}
+
+type Mutation {
+  createUser(input: CreateUserInput!): User!
+  updateUser(id: ID!, input: CreateUserInput!): User!
+  deleteUser(id: ID!): Boolean!
+}
